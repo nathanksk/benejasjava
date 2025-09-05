@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="aviso">
+        <strong>Aviso:</strong> Este exemplo tenta modificar uma variável constante com <code>const</code>.
+        Isso vai gerar um erro no console! Abra o console do navegador (F12 ou Ctrl+Shift+I) para ver o erro.
+      </div>
+    
+      <script>
+        try {
+          const linguagem = "JavaScript";
+          console.log("Valor original:", linguagem);
+    
+          // Tentativa de alteração da constante
+          linguagem = "Python"; // Isso vai gerar um erro!
+    
+        } catch (erro) {
+          console.error("Erro ao tentar alterar a constante:", erro);
+        }
+      </script>
+    
+
+
+</body>
+</html>

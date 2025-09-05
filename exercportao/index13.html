@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style13.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Informações em Bloco</h1>
+        <button onclick="coletarInformacoes()">Clique para inserir informações</button>
+      </div>
+    
+      <script>
+        function coletarInformacoes() {
+          const nome = prompt("Qual é o seu nome?");
+          const idade = prompt("Quantos anos você tem?");
+          const profissao = prompt("Qual é a sua profissão?");
+          
+          console.log(`Nome: ${nome}`);
+          console.log(`Idade: ${idade}`);
+          console.log(`Profissão: ${profissao}`);
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style12.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="style12.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Saudação Personalizada</h1>
+        <button onclick="saudar()">Receber Saudação</button>
+
+      </div>
+    
+      <script>
+        function saudar() {
+          const nome = prompt("Digite seu nome:");
+          const turno = prompt("Em qual turno você está? (manhã, tarde ou noite)").toLowerCase();
+    
+          let saudacao = "Olá";
+    
+          if (turno === "manhã") {
+            saudacao = "Bom dia";
+          } else if (turno === "tarde") {
+            saudacao = "Boa tarde";
+          } else if (turno === "noite") {
+            saudacao = "Boa noite";
+          }
+    
+          console.log(`${saudacao}, ${nome}!`);
+        }
+      </script>
+</body>
+</html>

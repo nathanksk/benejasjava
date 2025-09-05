@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px;
+  }
+
+  /* Estilo para o botão Olá */
+  .olá-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .olá-btn:hover {
+    background-color: #45a049;
+  }
+
+  /* Estilo para o botão Tchau */
+  .tchau-btn {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .tchau-btn:hover {
+    background-color: #e53935;
+  }

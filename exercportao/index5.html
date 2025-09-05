@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Monte sua Frase</h1>
+  <button onclick="montarFrase()">Criar Frase</button>
+
+  <script>
+    function montarFrase() {
+      let palavra1 = prompt("Digite a primeira palavra:");
+      let palavra2 = prompt("Digite a segunda palavra:");
+      let palavra3 = prompt("Digite a terceira palavra:");
+
+      let frase = `Você digitou: "${palavra1}", "${palavra2}" e "${palavra3}". A frase montada é: ${palavra1} ${palavra2} ${palavra3}`;
+
+      alert(frase);
+    }
+  </script>
+
+
+
+</body>
+</html>

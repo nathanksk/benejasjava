@@ -1,0 +1,123 @@
+from datetime import datetime, timedelta
+from collections import defaultdict
+
+class Autor:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def __str__(self):
+        return self.nome
+
+
+class Livro:
+    def __init__(self, id, titulo, autor, total_exemplares):
+        self.id = id
+        self.titulo = titulo
+        self.autor = autor
+        self.total_exemplares = total_exemplares
+        self.exemplares_disponiveis = total_exemplares
+        self.quantidade_emprestimos = 0
+
+    def __str__(self):
+        return f"{self.titulo} - {self.autor} ({self.exemplares_disponiveis}/{self.total_exemplares} disponíveis)"
+
+
+class Usuario:
+    def __init__(self, id, nome):
+        self.id = id
+        self.nome = nome
+        self.emprestimos = []
+
+    def __str__(self):
+        return self.nome
+
+
+class Emprestimo:
+    def __init__(self, livro, usuario, dias=7):
+        self.livro = livro
+        self.usuario = usuario
+        self.data_emprestimo = datetime.now()
+        self.data_devolucao = self.data_emprestimo + timedelta(days=dias)
+        self.devolvido = False
+
+    def devolver(self):
+        self.devolvido = True
+        atraso = (datetime.now() - self.data_devolucao).days
+        multa = max(0, atraso) * 2  # R$2 por dia de atraso
+        return multa
+
+
+class Biblioteca:
+    def __init__(self):
+        self.livros = []
+        self.usuarios = []
+        self.emprestimos = []
+
+    def adicionar_livro(self, livro):
+        self.livros.append(livro)
+
+    def adicionar_usuario(self, usuario):
+        self.usuarios.append(usuario)
+
+    def emprestar_livro(self, livro_id, usuario_id):
+        livro = next((l for l in self.livros if l.id == livro_id), None)
+        usuario = next((u for u in self.usuarios if u.id == usuario_id), None)
+
+        if not livro or not usuario:
+            print("❌ Livro ou usuário não encontrado.")
+            return
+
+        if livro.exemplares_disponiveis < 1:
+            print("⚠️ Livro indisponível no momento.")
+            return
+
+        emprestimo = Emprestimo(livro, usuario)
+        self.emprestimos.append(emprestimo)
+        usuario.emprestimos.append(emprestimo)
+        livro.exemplares_disponiveis -= 1
+        livro.quantidade_emprestimos += 1
+        print(f"✅ Empréstimo realizado: {livro.titulo} para {usuario.nome}")
+
+    def devolver_livro(self, livro_id, usuario_id):
+        for emp in self.emprestimos:
+            if emp.livro.id == livro_id and emp.usuario.id == usuario_id and not emp.devolvido:
+                multa = emp.devolver()
+                emp.livro.exemplares_disponiveis += 1
+                print(f"📚 Livro devolvido. Multa: R${multa:.2f}")
+                return
+        print("❌ Empréstimo não encontrado.")
+
+    def listar_livros_populares(self):
+        print("\n🔥 Livros Mais Populares:")
+        populares = sorted(self.livros, key=lambda l: l.quantidade_emprestimos, reverse=True)
+        for livro in populares[:5]:
+            print(f"{livro.titulo} - {livro.quantidade_emprestimos} empréstimos")
+
+
+# === Demonstração ===
+if __name__ == "__main__":
+    # Criando biblioteca
+    biblioteca = Biblioteca()
+
+    # Autores
+    autor1 = Autor("George Orwell")
+    autor2 = Autor("J.K. Rowling")
+
+    # Livros
+    livro1 = Livro(1, "1984", autor1, 3)
+    livro2 = Livro(2, "Harry Potter", autor2, 2)
+
+    biblioteca.adicionar_livro(livro1)
+    biblioteca.adicionar_livro(livro2)
+
+    # Usuários
+    usuario1 = Usuario(1, "João")
+    usuario2 = Usuario(2, "Maria")
+
+    biblioteca.adicionar_usuario(usuario1)
+    biblioteca.adicionar_usuario(usuario2)
+
+    # Empréstimos
+    biblioteca.emprestar_livro(1, 1)
+    biblioteca.emprestar_livro(2, 2)
+    biblioteca.emprestar_livro(1, 2)_

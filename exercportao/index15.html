@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style15.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversão e Soma</h1>
+        <button onclick="somarNumeros()">Clique para somar dois números</button>
+      </div>
+    
+      <script>
+        function somarNumeros() {
+          const numero1 = prompt("Digite o primeiro número:");
+          const numero2 = prompt("Digite o segundo número:");
+    
+          const num1 = Number(numero1);
+          const num2 = Number(numero2);
+    
+          const soma = num1 + num2;
+    
+          alert(`A soma de ${num1} e ${num2} é: ${soma}`);
+        }
+      </script>
+</body>
+</html>

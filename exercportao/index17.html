@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style17.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Formulário</h2>
+        <form onsubmit="mostrarDados(event)">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" required>
+    
+          <label for="idade">Idade:</label>
+          <input type="number" id="idade" required>
+    
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    
+      <script>
+        function mostrarDados(event) {
+          event.preventDefault(); 
+    
+          const nome = document.getElementById('nome').value;
+          const idade = document.getElementById('idade').value;
+    
+          if (nome && idade) {
+            alert(`Nome: ${nome}\nIdade: ${idade}`);
+          } else {
+            alert("Preencha todos os campos!");
+          }
+        }
+      </script>
+</body>
+</html>

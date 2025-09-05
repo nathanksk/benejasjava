@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style20.css">
+</head>
+<body>
+  <h1>Tabela Dinâmica de Variáveis</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Nome da Variável</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody id="corpoTabela">
+      
+    </tbody>
+  </table>
+
+  <button onclick="preencherTabela()">Preencher Tabela</button>
+
+  <script>
+    function preencherTabela() {
+      const corpo = document.getElementById("corpoTabela");
+      corpo.innerHTML = ""; 
+
+      var linguagem = "JavaScript";
+      let ano = 2025;
+      const pi = 3.14;
+
+      const variaveis = [
+        { tipo: "var", nome: "linguagem", valor: linguagem },
+        { tipo: "let", nome: "ano", valor: ano },
+        { tipo: "const", nome: "pi", valor: pi }
+      ];
+
+      variaveis.forEach((item) => {
+        const linha = document.createElement("tr");
+        linha.innerHTML = `
+          <td>${item.tipo}</td>
+          <td>${item.nome}</td>
+          <td>${item.valor}</td>
+        `;
+        corpo.appendChild(linha);
+      });
+    }
+  </script>
+</body>
+</html>

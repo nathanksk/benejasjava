@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style14.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Verificação de Valor</h1>
+        <button onclick="verificarValor()">Clique para verificar o valor</button>
+      </div>
+    
+      <script>
+        function verificarValor() {
+          const numero = prompt("Digite um número:");
+    
+          if (Number(numero) > 10) {
+            console.log(`O número ${numero} é maior que 10.`);
+          } else {
+            console.log(`O número ${numero} não é maior que 10.`);
+          }
+        }
+      </script>
+</body>
+</html>
